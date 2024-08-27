@@ -7,7 +7,9 @@ import { useTitle } from '../hooks/useTitle';
 export const MovieDetails = () => {
   const params = useParams();
   const [movie, setMovie] = useState({});
+
   const image = movie.poster_path ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}` : EmptyImage;
+    //eslint-disable-next-line
   const pageTitle = useTitle(movie.title);
 
   useEffect(() => {
@@ -18,7 +20,7 @@ export const MovieDetails = () => {
       console.log(json);
     };
     fetchMovie();
-  }, []);
+  }, [params.id]);
 
   return (
     <main>
